@@ -1,0 +1,25 @@
+{
+  "name": "mini-cli",
+  "version": "0.0.1",
+  "description": "A vorpal cli-based tool for minifying various inputs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "node test"
+  },
+  "keywords": [
+    "minifier",
+    "cli",
+    "vorpal"
+  ],
+  "author": "codenamesrcl",
+  "license": "MIT",
+  "dependencies": {
+    "js-beautify": "^1.6.4",
+    "minimize": "^2.0.0",
+    "pretty-data2": "^0.40.1",
+    "uglify-js": "^2.7.3",
+    "vorpal": "^1.11.4",
+    "xml-beautifier": "^0.3.0"
+  }
+}
