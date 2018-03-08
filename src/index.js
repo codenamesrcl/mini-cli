@@ -7,6 +7,16 @@ const vorpal = require('vorpal')(),
       js = require('./lib/js'),
       json = require('./lib/json');
 
+/**
+ * TODO: 
+ * 1. Convert to promise based calls
+ *     - When i first wrote the basic scripts they were using synchrnous fs calls
+ *       for simplicity and I wasn't doing batch jobs, it was just one thing at a time as needed.
+ *       With the introduction of batch jobs it's more time efficient to use the regular fs async calls.          
+ *       It's not a huge effort to do but it's just another thing that eventually will be done for the sake of
+ *       efficiency.
+ */
+
 var jobs = {
     html: function(tasks){
         return html.mini(tasks)
@@ -26,6 +36,12 @@ var jobs = {
     jspretty: function(tasks){
         return js.pretty(tasks);
     },
+    css: function(tasks){
+        console.log('css protocol not implemented yet')
+    },
+    csspretty: function(tasks){
+        console.log('css protocol not implemented yet')
+    }
 }
 
 vorpal
@@ -53,6 +69,7 @@ vorpal
     .option("--source <path>", "Path to the source file")
     .option("--dest <path>", "Path to the output")
     .action(function(args, callback){
+        json.mini([args.options]);
         this.log("json minify complete")
         callback();
     });
@@ -62,6 +79,7 @@ vorpal
     .option("--source <path>", "Path to the source file")
     .option("--dest <path>", "Path to the output")
     .action(function(args, callback){
+        json.pretty([args.options]);
         this.log("json prettify complete")
         callback();
     });
@@ -80,7 +98,7 @@ vorpal
     .option("--source <path>", "Path to the source file")
     .option("--dest <path>", "Path to the output")
     .action(function(args, callback){
-
+        js.pretty([args.options]);
         this.log("js beautify complete")
         callback();
     });

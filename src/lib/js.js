@@ -22,6 +22,7 @@ function pretty(configs){
 }
 
 function mini(configs){
+    console.log('js minify not implemented fully yet');
     configs.forEach(function(config){
 
     });
